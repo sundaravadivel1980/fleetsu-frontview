@@ -1,0 +1,28 @@
+<mat-toolbar layout="row" class="mat-hue-3">
+    <div class="mat-toolbar-tools">
+        <mat-icon matListIcon>devices</mat-icon> 
+        <span class="device-padding">Device List</span>
+    </div>
+  </mat-toolbar>
+<br><br>
+  <mat-list-item class="mat-3-line">
+    <div class="mat-list-item-text" layout="row">
+      <span class="device-padding"><b>Device Label</b></span>
+      <span class="device-padding"><b>Device Last Reported Date</b></span>
+      <span class="device-padding"><b>Status</b></span>
+    </div>
+  </mat-list-item>
+<mat-list>
+    <mat-list-item  *ngFor="let device of deviceList">
+        <span class="device-padding">{{device.device_label}}</span>
+        <span class="device-padding">{{device.device_reported_datetime | date : 'dd.MM.y T HH:mm:ss': '+0530'}} IST</span>
+        <span *ngIf="device.device_reported_datetime | date : 'HH' > 24; then truthyTemplate else falsyTemplate"></span>
+        <ng-template #truthyTemplate >
+            <span class="statusok"><h1>OK</h1></span>
+          </ng-template>
+          <ng-template #falsyTemplate>
+        <span class="statusfail"><h1>FAILED</h1></span>
+          </ng-template>
+    </mat-list-item>
+</mat-list>
+

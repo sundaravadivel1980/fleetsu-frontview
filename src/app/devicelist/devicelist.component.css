@@ -1,0 +1,12 @@
+.device-padding {
+    padding:100px;
+}
+.statusok {
+    padding-left: 132px;
+    color: green;
+}
+
+.statusfail {
+    padding-left: 132px;
+    color: red;
+}
